@@ -11,8 +11,4 @@ cfs:standard-packages
 cfs:filesystem
 aldeed:collection2
 iron:router
-meteorhacks:npm
-
-
-npm-container
 dburles:collection-helpers
