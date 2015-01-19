@@ -1,4 +1,7 @@
 Template.pkg.events({
+  'click .secure-wipe': function() {
+    alert('not implemented')
+  },
   'click .generate': function(event, template) {
     var codes = this.pkg.retrievalCodes || [];
     codes.push({
