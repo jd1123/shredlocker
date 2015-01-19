@@ -6,15 +6,17 @@ Router.route('/p/:_id/c/:code', function() {
       this.response.writeHead(401, {"Content-Type": "text/plain"});
       this.response.end("401 Not authorized. Ask for a new code.");
     } else {
-      pkg.consumeCode(code);
       var file = UserFiles.findOne({ _id: pkg.fileId });
       this.response.writeHead(200, {
         'Content-Type': file.original.type,
         'Content-Disposition': 'attachment; filename=' + file.original.name,
         'Content-Length': file.original.size
       });
-      readStream = fileStore.adapter.createReadStreamForFileKey(file.copies.user_files.key);
+      var readStream = fileStore.adapter.createReadStreamForFileKey(file.copies.user_files.key);
       readStream.pipe(this.response);
+      readStream.on('end', Meteor.bindEnvironment(function() {
+        pkg.consumeCode(code);
+      }));
     }
   } else {
     this.response.writeHead(404, {"Content-Type": "text/plain"});

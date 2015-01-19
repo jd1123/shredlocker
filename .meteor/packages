@@ -6,9 +6,12 @@
 
 meteor-platform
 autopublish
-insecure
 cfs:standard-packages
 cfs:filesystem
 aldeed:collection2
 iron:router
 dburles:collection-helpers
+meteorhacks:npm
+
+
+npm-container
