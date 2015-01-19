@@ -31,5 +31,8 @@ Packages.attachSchema({
   },
   'retrievalCodes.$.createdAt': {
     type: Date
+  },
+  'retrievalCodes.$.consumerIp': {
+    type: String
   }
 })

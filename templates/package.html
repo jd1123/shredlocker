@@ -8,10 +8,10 @@
   <a href="{{ url }}">{{ url }}</a>
   <br>
   {{#if consumed}}
-  <span>Consumed at {{consumedAt}}. No more downloads are possible.</span>
+  <span>Consumed at {{consumedAt}} by {{consumerIp}}.</span>
   {{ else }}
   <span>Not Consumed</span>
-  <button data-pkg="{{pkg.id}}" class="revoke">Revoke</button>
+  <button class="revoke">Revoke</button>
   {{/if}}
   </li>
   {{/each}}
