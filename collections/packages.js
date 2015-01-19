@@ -9,6 +9,27 @@ Packages.allow({
   }
 })
 
+Packages.helpers({
+  consumeCode: function(retCode) {
+    var pkg = this;
+    retCode.consumed = true;
+    retCode.consumedAt = new Date();
+    var codes = pkg.retrievalCodes || [];
+    var idx = null;
+    for (var i=0; i<pkg.retrievalCodes.length; i++) {
+      var c = pkg.retrievalCodes[i];
+      if (c.code === retCode.code) {
+        idx = i;
+        break;
+      }
+    }
+    pkg.retrievalCodes[idx] = retCode;
+    Packages.update({ _id: pkg._id }, {
+      $set: { retrievalCodes: pkg.retrievalCodes }
+    });
+  }
+})
+
 Packages.attachSchema({
   fileId: {
     type: String,
@@ -33,6 +54,7 @@ Packages.attachSchema({
     type: Date
   },
   'retrievalCodes.$.consumerIp': {
-    type: String
+    type: String,
+    optional: true
   }
 })

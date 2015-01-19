@@ -1,3 +1,10 @@
+Template.pkg.helpers({
+  'retrievalURL': function() {
+    return window.location.href+'/c/'+this.code;
+  }
+});
+
+
 Template.pkg.events({
   'click .secure-wipe': function() {
     alert('not implemented')

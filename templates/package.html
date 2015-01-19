@@ -1,11 +1,12 @@
 <template name="pkg">
+<button class="generate">Generate Code</button>
 <button class="secure-wipe">Secure Wipe</button>
 <h1>Retrieval Codes</h1>
 {{#if pkg.retrievalCodes.length }}
 <ul>
   {{#each pkg.retrievalCodes }}
   <li>
-  <a href="{{ url }}">{{ url }}</a>
+  <a href="{{ retrievalURL }}">{{ retrievalURL }}</a>
   <br>
   {{#if consumed}}
   <span>Consumed at {{consumedAt}} by {{consumerIp}}.</span>
@@ -19,5 +20,4 @@
 {{else}}
 No codes yet...
 {{/if}}
-<button class="generate">Generate</button>
 </template>
