@@ -1,2 +1,3 @@
 remove insecure package
 restrict updating retrieval codes
+unlink the file too (We're already zeroing or at least i think we are :P)
