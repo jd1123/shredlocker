@@ -1,3 +1,7 @@
 <template name="dropoff">
-<input type="file" class="myFileInput" />
+{{#if busy}}
+<p>please wait... uploading...</p>
+{{else}}
+<input type="file" />
+{{/if}}
 </template>

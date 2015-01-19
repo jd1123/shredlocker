@@ -1,0 +1,22 @@
+<template name="pkg">
+<h1>Retrieval Codes</h1>
+{{#if pkg.retrievalCodes.length }}
+<ul>
+  {{#each pkg.retrievalCodes }}
+  <li>
+  <a href="{{ url }}">{{ url }}</a>
+  <br>
+  {{#if consumed}}
+  <span>Consumed at {{consumedAt}}. No more downloads are possible.</span>
+  {{ else }}
+  <span>Not Consumed</span>
+  <button data-pkg="{{pkg.id}}" class="revoke">Revoke</button>
+  {{/if}}
+  </li>
+  {{/each}}
+</ul>
+{{else}}
+No codes yet...
+{{/if}}
+<button class="generate">Generate</button>
+</template>
